@@ -1,0 +1,605 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #1A1A1C;
+    --sidebar: #141415;
+    --card: #232326;
+    --input: #58585d;
+    --border: #333337;
+    --text: #EDEDEE;
+    --muted: #8E8E96;
+    --accent: #DF5148;
+    --accent-hover: #E8665D;
+    --approved: #DF5148;
+    --rejected: #7C93AD;
+    --warn: #E0B25A;
+}
+
+/* ---------- Base ---------- */
+html,
+body,
+.stApp,
+[class*="css"] {
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif !important;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.stApp {
+    background: var(--bg) !important;
+}
+
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+#MainMenu,
+footer {
+    display: none !important;
+}
+
+.block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+    max-width: 1280px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+li,
+span {
+    color: var(--text);
+}
+
+hr {
+    border-color: var(--border) !important;
+}
+
+div[data-testid="stVerticalBlock"] {
+    gap: 0.9rem !important;
+}
+
+div[data-testid="stHorizontalBlock"] {
+    gap: 16px !important;
+}
+
+/* ---------- Sidebar (fixed width) ---------- */
+section[data-testid="stSidebar"] {
+    background: var(--sidebar) !important;
+    border-right: 1px solid var(--border) !important;
+    width: 264px !important;
+    min-width: 264px !important;
+    max-width: 264px !important;
+}
+
+section[data-testid="stSidebar"]>div {
+    width: 264px !important;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.brand-sub {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.side-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 18px 0 6px 0;
+}
+
+.side-note {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* Nav list built from st.radio */
+section[data-testid="stSidebar"] div[role="radiogroup"] {
+    gap: 2px !important;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label {
+    display: flex;
+    width: 100%;
+    padding: 9px 12px;
+    border-left: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label>div:first-child {
+    display: none !important;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label p {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label:has(input:checked) {
+    background: var(--accent);
+    border-left-color: var(--accent);
+    border-radius: 8px;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"]>label:has(input:checked) p {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* ---------- Page header ---------- */
+.page-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.page-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.page-head {
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Section headers & chart text ---------- */
+.sec-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 8px 0 0 0;
+}
+
+.sec-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0 8px 0;
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+}
+
+.chart-cap {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0 4px 0;
+    line-height: 1.45;
+}
+
+/* ---------- Cards ---------- */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+    box-shadow: none !important;
+}
+
+div[data-testid="stForm"] {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    min-height: 118px;
+    margin-bottom: 4px;
+}
+
+.kpi-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.kpi-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 6px;
+    line-height: 1.15;
+}
+
+.kpi-value.accent {
+    color: var(--accent);
+}
+
+.kpi-cap {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+/* ---------- Native st.metric (used on Bulk page) ---------- */
+[data-testid="stMetric"] {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 14px 16px !important;
+}
+
+[data-testid="stMetricLabel"] p {
+    color: var(--muted) !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--text) !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+}
+
+/* ---------- Buttons ---------- */
+.stButton>button,
+.stDownloadButton>button {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    box-shadow: none !important;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.stButton>button[kind="primary"],
+[data-testid="stBaseButton-primary"] {
+    background: var(--accent) !important;
+    color: #FFFFFF !important;
+    border: 1px solid var(--accent) !important;
+}
+
+.stButton>button[kind="primary"]:hover,
+[data-testid="stBaseButton-primary"]:hover {
+    background: var(--accent-hover) !important;
+    border-color: var(--accent-hover) !important;
+    color: #FFFFFF !important;
+}
+
+.stButton>button[kind="primary"] p,
+[data-testid="stBaseButton-primary"] p {
+    color: #FFFFFF !important;
+}
+
+.stButton>button[kind="secondary"],
+[data-testid="stBaseButton-secondary"],
+.stDownloadButton>button {
+    background: transparent !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.stButton>button[kind="secondary"]:hover,
+[data-testid="stBaseButton-secondary"]:hover,
+.stDownloadButton>button:hover {
+    background: var(--input) !important;
+    border-color: var(--muted) !important;
+}
+
+button:disabled {
+    opacity: .45 !important;
+}
+
+/* ---------- Inputs ---------- */
+div[data-baseweb="select"]>div,
+div[data-baseweb="input"],
+div[data-baseweb="base-input"],
+.stNumberInput input,
+input[type="text"],
+input[type="number"] {
+    background-color: var(--input) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+    border-radius: 8px !important;
+}
+
+div[data-baseweb="select"]>div:focus-within,
+div[data-baseweb="input"]:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: none !important;
+}
+
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div {
+    color: var(--text);
+}
+
+div[data-baseweb="select"] svg {
+    fill: var(--muted) !important;
+}
+
+::placeholder {
+    color: #6e6e76 !important;
+    opacity: 1 !important;
+}
+
+.stNumberInput button {
+    background: var(--input) !important;
+    color: var(--accent) !important;
+    border-color: var(--border) !important;
+}
+
+ul[role="listbox"],
+div[data-baseweb="popover"] ul {
+    background: var(--input) !important;
+}
+
+li[role="option"]:hover,
+li[aria-selected="true"] {
+    background: #333337 !important;
+}
+
+label[data-testid="stWidgetLabel"] p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* ---------- Alerts, expanders, upload, tables ---------- */
+.stAlert {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+details {
+    background: var(--card);
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+details summary {
+    color: var(--text) !important;
+    font-weight: 500;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+    background: var(--card) !important;
+    border: 1px dashed var(--border) !important;
+    border-radius: 10px !important;
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+    border-color: var(--accent) !important;
+}
+
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+div[data-testid="stProgress"]>div>div>div>div {
+    background-color: var(--accent) !important;
+}
+
+.clean-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+}
+
+.clean-table th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.clean-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+.clean-table tr:last-child td {
+    border-bottom: none;
+}
+
+.clean-table td.muted {
+    color: var(--muted);
+}
+
+.clean-table td.num,
+.clean-table th.num {
+    text-align: right;
+}
+
+.clean-table tr.best td {
+    background: rgba(223, 81, 72, 0.10);
+    font-weight: 600;
+}
+
+.clean-table tr.best td:first-child {
+    border-left: 3px solid var(--accent);
+}
+
+/* ---------- Steps (horizontal line) ---------- */
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 20px 0;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-text {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.step-arrow {
+    color: var(--muted);
+    margin: 0 4px;
+}
+
+/* ---------- Result panel ---------- */
+.result-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.result-title.ok {
+    color: var(--approved);
+}
+
+.result-title.no {
+    color: var(--rejected);
+}
+
+.bar-track {
+    background: var(--input);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.factor {
+    font-size: 13.5px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.factor:last-child {
+    border-bottom: none;
+}
+
+.factor .up {
+    color: var(--approved);
+    font-weight: 600;
+}
+
+.factor .down {
+    color: var(--rejected);
+    font-weight: 600;
+}
+
+.empty {
+    color: var(--muted);
+    font-size: 13.5px;
+    padding: 12px 0;
+}
+
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.calc-row:last-child {
+    border-bottom: none;
+}
+
+.calc-row span:first-child {
+    color: var(--muted);
+}
+
+.calc-row span:last-child {
+    font-weight: 600;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 900px) {
+    .page-title {
+        font-size: 24px;
+    }
+
+    .kpi-value {
+        font-size: 24px;
+    }
+
+    .step-arrow {
+        display: none;
+    }
+}
